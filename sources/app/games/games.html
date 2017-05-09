@@ -1,0 +1,78 @@
+<div class="games-container">
+  <div class="games-list">
+    <section class="games-new pointer">
+      <a data-ui-sref=".edit({ id: 0 })">+</a>
+    </section>
+    <section
+      data-ng-repeat="game in (gamesList = games.list
+      | filter:search
+      | startFrom:games.currentPage * pageSize
+      | limitTo:pageSize)
+      | orderBy:sortType:true
+      track by game.$id"
+      data-ng-style="{ 'background-image': 'url(' + game.imageUrl + ')' }">
+      <div class="games-rating">
+        <span data-ng-bind="game.rating >= 1 ? '&#9733;' : '&#9734;'"></span>
+        <span data-ng-bind="game.rating >= 2 ? '&#9733;' : '&#9734;'"></span>
+        <span data-ng-bind="game.rating >= 3 ? '&#9733;' : '&#9734;'"></span>
+        <span data-ng-bind="game.rating >= 4 ? '&#9733;' : '&#9734;'"></span>
+        <span data-ng-bind="game.rating >= 5 ? '&#9733;' : '&#9734;'"></span>
+      </div>
+      <div class="games-time">
+        <span>&#9719;&nbsp;<span data-ng-bind="game.time"></span></span>
+      </div>
+      <a
+        class="games-heading"
+        data-ng-bind="game.name"
+        data-ui-sref=".edit({ id: game.$id })"></a>
+    </section>
+  </div>
+  <div class="pagination" data-ng-show="pageSize">
+    <button
+      data-ng-disabled="games.currentPage == 0"
+      data-ng-click="games.currentPage = games.currentPage - 1;">
+      Previous
+    </button>
+    <span data-ng-bind="games.currentPage + 1 + '/' + games.numberOfPages(gamesList.length, pageSize)"></span>
+    <button
+      data-ng-disabled="games.currentPage >= gamesList.length / pageSize - 1"
+      data-ng-click="games.currentPage = games.currentPage + 1;">
+      Next
+    </button>
+  </div>
+  <aside>
+    <div class="message-info" data-ng-hide="games.formOpen || gamesList.length">
+      <p>You don't play any game now</p>
+      <a data-ui-sref=".edit({ id: 0 })">Let's have some fun!</a>
+    </div>
+    <div class="games-filters" data-ng-hide="games.formOpen || !gamesList.length">
+      <form action="">
+        <label for="search">Search</label>
+        <input
+          type="search"
+          data-ng-model="search"
+          placeholder="e.g.: Pocker"
+          id="search">
+        <label for="sortBy">Sort By</label>
+        <select
+          id="sortBy"
+          data-ng-model="sortType">
+          <option value="" disabled="">Select criteria</option>
+          <option value="timestamp">Date</option>
+          <option value="rating">Rating</option>
+          <option value="time">Hours spent</option>
+        </select>
+        <label for="pageSize">Paginate By</label>
+        <select
+          id="pageSize"
+          data-ng-model="pageSize">
+          <option value="" disabled="">Select amount</option>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+       </select>
+      </form>
+    </div>
+    <div data-ui-view></div>
+  </aside>
+</div>

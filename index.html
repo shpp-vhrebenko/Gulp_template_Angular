@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <title>Clubs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/normalize.css/normalize.css" />
+  <!-- endbower -->
+
+  <!-- inject:css -->
+  <link rel="stylesheet" href="sources/assets/styles/index.css">
+  <!-- endinject -->
+</head>
+<body data-ng-controller="MainCtrl" data-ng-cloak>
+  <header>
+    <div class="logo">
+      <a href="#/games">&#9831;&nbsp;Clubs</a>
+    </div>
+    <div class="user">
+      <a data-ui-sref="auth.signup" class="signup pointer ng-hide" data-ng-show="!me.status">
+        Sign up
+      </a>
+      <a data-ui-sref="auth.login" class="login pointer ng-hide" data-ng-show="!me.status">
+        Log in
+      </a>
+      <span data-ng-bind="me.email"></span>
+      <a data-ng-click="logOut();" class=" pointer ng-hide" data-ng-show="me.status">
+        Log out
+      </a>
+    </div>
+  </header>
+  <main>
+    <div data-ui-view></div>
+  </main>
+
+  <!-- bower:js -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/firebase/firebase.js"></script>
+  <script src="bower_components/angularfire/dist/angularfire.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <!-- endbower -->
+
+  <!-- inject:js -->
+  <script src="sources/app/index.js"></script>
+  <script src="sources/app/auth/auth.module.js"></script>
+  <script src="sources/app/auth/auth.controller.js"></script>
+  <script src="sources/app/auth/auth.service.js"></script>
+  <script src="sources/app/games/games.module.js"></script>
+  <script src="sources/app/games/games.controller.js"></script>
+  <script src="sources/app/games/games.form.controller.js"></script>
+  <script src="sources/app/games/games.service.js"></script>
+  <script src="sources/app/main/app.config.js"></script>
+  <script src="sources/app/main/app.constant.js"></script>
+  <script src="sources/app/main/app.run.js"></script>
+  <script src="sources/app/main/firebase.service.js"></script>
+  <script src="sources/app/main/main.controller.js"></script>
+  <script src="sources/app/main/start.filter.js"></script>
+  <!-- endinject -->
+</body>
+</html>

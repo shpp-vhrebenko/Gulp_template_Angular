@@ -1,0 +1,215 @@
+$gray: #8b8687;
+$black: #333030;
+$white: #e3dede;
+$yellow: #f6ea8c;
+$lightGray: #a19d9d;
+$red: #cf253a;
+
+* {
+  line-height: 1;
+}
+
+body  {
+  background-color: $gray;
+  font-family: 'Lato', sans-serif;
+  font-weight: 100;
+}
+
+a {
+  text-decoration: none;
+}
+
+a, input, button, [type=submit], select {
+  border: 0;
+  outline: none;
+}
+
+header {
+  background-color: $black;
+  padding: 0 1rem;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  .logo, nav, .user {
+    display: inline-block;
+  }
+  .logo {
+    width: 150px;
+    a {
+      font-size: 1.5rem;
+
+      line-height: 70px;
+    }
+  }
+  .user {
+    float: right;
+    padding: 18px 0;
+    span {
+      color: $yellow
+    }
+    a {
+      display: inline-block;
+      border: 1px solid $white;
+      border-radius: 1000px;
+      padding: .5rem 1rem;
+      margin-left: 1rem;
+      &.login {
+        color: $yellow;
+        border-color: $yellow;
+      }
+    }
+  }
+  a {
+    color: $white;
+  }
+}
+
+aside {
+  background-color: $lightGray;
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 350px;
+  z-index: 0;
+  padding: 2rem;
+  padding-top: calc(70px + 2rem);
+  box-sizing: border-box;
+}
+
+.pointer {
+  cursor: pointer;
+}
+.ng-hide {
+  display: none !important;
+}
+
+.pagination {
+  text-align: center;;
+  button {
+    background-color: transparent;
+    border: 1px solid $white;
+    color: $white;
+    border-radius: 1000px;
+    width: 100px;
+    line-height: 2;
+    margin: 0 auto;
+    &[disabled=disabled] {
+      color: $lightGray;
+      border-color: $lightGray;
+    }
+  }
+  span {
+    margin: 0 1rem;
+    color: $white;
+  }
+}
+
+form {
+  label {
+    display: block;
+    color: $black;
+    font-size: small;
+    color: $yellow;
+  }
+  .error {
+    label {
+      color: $red;
+    }
+    input {
+      border-color: $red;
+    }
+  }
+  input, select {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid $white;
+    color: $white;
+    display: block;
+    width: 100%;
+    outline: none;
+    line-height: 2.5;
+    margin-bottom: 2rem;
+    border-radius: 0;
+    position: relative;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  select {
+    cursor: pointer;
+  }
+  [type=submit], button, a[type=button] {
+    background-color: transparent;
+    border: 1px solid $yellow;
+    color: $yellow;
+    border-radius: 1000px;
+    width: 100px;
+    line-height: 2;
+    margin: 0 auto;
+    display: block;
+  }
+  a[type=button].white {
+    color: $white;
+    border-color: $white;
+  }
+}
+::-webkit-input-placeholder {
+  color: $white;
+}
+::-moz-placeholder {
+  color: $white;
+}
+:-moz-placeholder {
+  color: $white;
+}
+:-ms-input-placeholder {
+  color: $white;
+}
+
+::-webkit-input-placeholder {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+::-moz-placeholder {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+:-moz-placeholder {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+:-ms-input-placeholder {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+input:focus::-webkit-input-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+input:focus::-moz-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+input:focus:-moz-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+input:focus:-ms-input-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/*injector*/
+@import 'auth/auth.css';
+@import 'games/games.css';
+/*endinjector*/
